@@ -15,9 +15,29 @@ const Register = () => {
         const lastName = form.lastname.value
         const email = form.email.value;
         const password = form.password.value;
+        const users = {
+            firstname: firstName,
+            lastname: lastName,
+            email: email,
+            password: password,
+            role: 'user'
+
+        }
         createUser(email, password)
             .then(result => {
                 const user = result.user
+                fetch('http://localhost:5000/user/register', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(users)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+
+                    })
                 form.reset();
                 toast.success('Successfully register')
                 router.push('/login')

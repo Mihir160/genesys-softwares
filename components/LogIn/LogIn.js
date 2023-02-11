@@ -1,29 +1,39 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const LogIn = () => {
-    const { login} = useContext(AuthContext)
+    const { login } = useContext(AuthContext)
     const router = useRouter()
     const [error, setError] = useState('')
+    const [admin, setAdmin] = useState([]);
+    console.log(admin)
     const handleLogin = event => {
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        login(email, password)   
-        .then(result => {
-            const user = result.user
-            toast.success('Successfully login')
-            router.push('/')
-            form.reset()
-        
-        })
-        .catch(error => {
-            setError(error.message)
-        })
+        login(email, password)
+            .then(result => {
+                const user = result.user
+                fetch(`http://localhost:5000/user/allusers/${email}`)
+                    .then(res => res.json())
+                    .then(data => setAdmin(data))
+                toast.success('Successfully login')
+
+                if (admin) {
+                    router.push("/userProfile");
+                } else {
+                    router.push("/");
+                }
+                form.reset()
+
+            })
+            .catch(error => {
+                setError(error.message)
+            })
 
     }
     return (
@@ -40,9 +50,9 @@ const LogIn = () => {
                             <label className="text-[#000000] text-[16px] font-[600]">Password</label>
                             <input name="password" placeholder="***********" className="loginInput pl-[16px] lg:w-[500px] xl:w-[600px] w-[250px] placeholder:pl-[3px] md:w-[350px] h-[40px] lg:h-[48px]" type="password" />
                         </div>
-                          <div className="mt-[4px]">
+                        <div className="mt-[4px]">
                             <p className="text-red-600">{error}</p>
-                          </div>
+                        </div>
                         <div className="mt-[40px] flex items-center gap-[24px]">
                             <button type="submit" className="lg:w-[109px] w-[100px] h-[45px] lg:h-[60px] bg-[#D2232A] text-[#FFFFFF] font-[600]">LOGIN</button>
                             <div>
