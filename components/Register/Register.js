@@ -26,7 +26,7 @@ const Register = () => {
         createUser(email, password)
             .then(result => {
                 const user = result.user
-                fetch('http://localhost:5000/user/register', {
+                fetch('https://genesys-softwares-server-site.vercel.app/user/register', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -52,7 +52,7 @@ const Register = () => {
         <div>
             <div>
                 <h1 className="text-[#000000] text-[700] text-[40px] text-center mt-[123px]">Sign up</h1>
-                <div className="lg:ml-[450px] 2xl:ml-[700px] md:ml-[350px] ml-[90px] mt-[40px]">
+                <div className="flex justify-center mt-[40px]">
                     <form onSubmit={handleRegister} className=" ">
                         <div className="flex flex-col gap-[8px]">
                             <label className="text-[#000000] text-[16px] font-[600]">First name</label>

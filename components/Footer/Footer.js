@@ -10,9 +10,9 @@ const Footer = () => {
                     <Image src='/image 2.png' width={210} height={66}></Image>
                 </div>
                 <div className="lg:mt-[35px]">
-                    <ul class=" items-center  space-x-8 lg:flex">
+                    <ul className=" items-center  space-x-8 lg:flex">
                         <li>
-                            <Link href='#' className="text-[16px] font-[600] text-[#FFFFFF]">Our Story</Link>
+                            <Link href='#' className="text-[16px] pl-[30px] font-[600] text-[#FFFFFF]">Our Story</Link>
                         </li>
                         <li>
 
