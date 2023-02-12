@@ -16,7 +16,7 @@ const UserProfil = () => {
             </div>
             <div className="mt-[67px] max-w-[900px] mx-auto p-4 my-[90px]">
                 <table className="table  border-l-0 border-r-0 w-full h-full ">
-                    <thead className="bg-none">
+                    <thead>
                         <tr className="text-black/50 text-[14px] ">
                             <th className="pl-0 font-normal">First Name</th>
                             <th className="pl-0 font-normal">Last name</th>
