@@ -9,7 +9,6 @@ const LogIn = () => {
     const router = useRouter()
     const [error, setError] = useState('')
     const [admin, setAdmin] = useState([]);
-    console.log(admin)
     const handleLogin = event => {
         event.preventDefault();
         const form = event.target;
@@ -20,7 +19,7 @@ const LogIn = () => {
                 const user = result.user
                 fetch(`https://genesys-softwares-server-site.vercel.app/user/allusers/${email}`)
                     .then(res => res.json())
-                    .then(data => setAdmin(data))
+                    .then(data => setAdmin(data.role))
                 toast.success('Successfully login')
 
                 if (admin) {
@@ -45,11 +44,11 @@ const LogIn = () => {
                         <form onSubmit={handleLogin} className="">
                             <div className="flex flex-col gap-[8px]">
                                 <label className="text-[#000000] text-[16px] font-[600]">Email</label>
-                                <input placeholder="your@email.com" name='email' className="loginInput pl-[16px] lg:w-[500px] w-[250px] xl:w-[600px] placeholder:pl-[3px] md:w-[350px] h-[40px] lg:h-[48px]" type="text" />
+                                <input required placeholder="your@email.com" name='email' className="loginInput pl-[16px] lg:w-[500px] w-[250px] xl:w-[600px] placeholder:pl-[3px] md:w-[350px] h-[40px] lg:h-[48px]" type="text" />
                             </div>
                             <div className="flex flex-col lg:mt-[32px] mt-[10px] gap-[8px]">
                                 <label className="text-[#000000] text-[16px] font-[600]">Password</label>
-                                <input name="password" placeholder="***********" className="loginInput pl-[16px] lg:w-[500px] xl:w-[600px] w-[250px] placeholder:pl-[3px] md:w-[350px] h-[40px] lg:h-[48px]" type="password" />
+                                <input required name="password" placeholder="***********" className="loginInput pl-[16px] lg:w-[500px] xl:w-[600px] w-[250px] placeholder:pl-[3px] md:w-[350px] h-[40px] lg:h-[48px]" type="password" />
                             </div>
                             <div className="mt-[4px]">
                                 <p className="text-red-600">{error}</p>
