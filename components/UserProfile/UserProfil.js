@@ -48,9 +48,9 @@ const UserProfil = () => {
                     </tbody>
                 </table>
                 <div className="border-b-2 border-black/30">
-                    <p className="py-[24px] ml-[15px] md:ml-[50px] lg:ml-[66px]">
+                    <p className="py-[24px] text-[16px] text-black ml-[15px] md:ml-[50px] lg:ml-[66px]">
                         <span className="">{users.length}</span>
-                        <span>Users</span>
+                        <span className="ml-[4px]">Users</span>
                     </p>
                 </div>
             </div>
