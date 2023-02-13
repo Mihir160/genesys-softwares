@@ -19,14 +19,14 @@ const LogIn = () => {
                 const user = result.user
                 fetch(`https://genesys-softwares-server-site.vercel.app/user/allusers/${email}`)
                     .then(res => res.json())
-                    .then(data => setAdmin(data.role))
-                toast.success('Successfully login')
-
-                if (admin) {
-                    router.push("/userProfile");
-                } else {
-                    router.push("/");
-                }
+                    .then(data => {
+                        if(data.message ==='admin'){
+                            router.push("/userProfile");
+                           
+                        }
+                        })
+                    toast.success('Successfully login')
+                
                 form.reset()
 
             })
