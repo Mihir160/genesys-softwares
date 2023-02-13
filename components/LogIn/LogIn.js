@@ -17,7 +17,7 @@ const LogIn = () => {
         login(email, password)
             .then(result => {
                 const user = result.user
-                fetch(`https://genesys-softwares-server-site.vercel.app/user/allusers/${email}`)
+                fetch(`https://genesys-softwares-server-site-mihir160.vercel.app/user/allusers/${email}`)
                     .then(res => res.json())
                     .then(data => {
                         if(data.message ==='admin'){
