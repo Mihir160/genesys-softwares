@@ -22,7 +22,6 @@ const LogIn = () => {
                     .then(data => {
                         if(data.message ==='admin'){
                             router.push("/userProfile");
-                           
                         }
                         })
                     toast.success('Successfully login')
